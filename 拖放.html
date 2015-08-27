@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>将图片文件拖放到页面中并显示</title>
+<script type="text/javaScript" />
+	//选择上传文件时调用的函数
+	function fileUpLoad_MoveFile(f){
+		//检测浏览器是否支持FileReader对象
+		if(typeof FileReader == "undefined"){
+				alert("检测到您的浏览器不支持FileReader对象!");
+				return;
+			}
+		for(var i=0; i<f.length;i++){
+				var tmpFile = f[i];
+				var reader = new FileReader();
+				reader.readAsDataURL(tmpFile);//将文件以数据地址的形式读入页面中
+				reader.onload = (function(fl){ //预览图片内容
+						return function(e){
+								var eleSpan = document.createElement("span");
+								//判断选择的文件是否是图片文件
+									if(/image\/\w+/.test(fl.type)){
+											eleSpan.innerHTML = ["<img src='e.target.result',title='fl.name' />"].join(" ");
+												//将获取的内容全部写入ulPreview中
+												document.getElementById("ulPreview").insertBefore(eleSpan,null); 
+										}else{
+												alert("请选择图片");
+											}
+									}
+							});
+			}
+		}	
+		function dropFile(e){
+				//调用预览上传文件的方式
+				fileUpLoad_MoveFile(e.dataTransfer.files);
+				//停止事件的传播
+				e.stopPropagation();
+				//阻止默认事件的发生
+				e.preventDefault();
+			}
+</script>
+</head>
+
+<body>
+	<form id="form1">
+    	<fieldset>
+        	<legend>拖动选择图片文件：</legend>
+            <ul id="ulPreview" ondrop="dropFile(event)">
+            	ondragenter="return false"
+                ondragover="return false"
+            </ul>
+        </fieldset>
+    </form>
+</body>
+</html>

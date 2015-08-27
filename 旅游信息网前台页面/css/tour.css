@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+header .logo{
+	float:left
+	position: absolute;
+	left: 47px;
+	top: 70px;
+	background: url(../images/logo.png) 0 0 no-repeat;
+	padding: 20px 0 0 20px;
+	width: 156px;
+	}
+header .logo h1{
+		font-size:38px;
+		line-height:1.2em;
+		color:#c3c3c3;
+		font-weight:normal;
+		font-style:normal;
+		letter-spacing:-1px;
+	}
+header .logo h1 a{
+	color:#c3c3c3;
+	text-decoration:none;
+	}
+header .logo h1 a strong{
+		color:#fff;
+	}
+
+heade nav{
+	float:right;
+		position:absolute;
+		right:25px;
+		top:97px;
+	}
+header nav ul li{
+		float:left;
+		padding-left:6px;
+		overflow:hidden;
+	}
+header nav ul li a{
+		float:left;
+		color:#faa;
+		text-decoration:none;
+		width:80px;
+		text-align:center;
+		line-height:31px;
+		font-size:14px;
+	}
+header nav ul li a:hover,
+header nav ul li a .current{
+		background:url(../images/topBar-bg.png) 0 0 repeat-x;
+		border-radius:5px;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+	}
